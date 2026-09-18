@@ -41,8 +41,25 @@ Alternatively, pass credentials on execution via terminal flags:
 
 ## Requirements & Setup
 
-1. WordPress Plugin Helper: Ensure the custom REST API helper plugin is enabled on the WordPress site to expose custom post type meta fields (`_yoast_wpseo_focuskeywords`, etc.) to `/wp-json/wp/v2/work`.
-2. Node.js: Ensure Node.js v18+ is installed locally.
+1. WordPress Helper Plugin: Yoast SEO metadata fields are not exposed to the standard REST API by default. Before running the importer, upload and activate the helper plugin included in this repository:
+
+- Source: `wp-plugin/expose-yoast-rest.php`
+- Target: Install as a Single File Plugin in `/wp-content/plugins/` (or package as a `.zip` file) and activate it via `wp-admin.` This exposes `_yoast_wpseo_focuskeywords` and related meta keys to `/wp-json/wp/v2/work`.
+
+2. Node.js Environment: Ensure Node.js v18+ is installed locally.
+
+### Project Structure
+
+```plaintext
+├── .gitignore
+├── README.md
+├── build-payload.js
+├── post-to-wp.js
+├── wp-config.json
+├── wp-payload.json
+└── wp-plugin/
+    └── expose-yoast-rest.php
+```
 
 ## Usage
 
